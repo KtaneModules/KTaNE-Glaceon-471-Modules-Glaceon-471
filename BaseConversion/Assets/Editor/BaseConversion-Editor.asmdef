@@ -1,0 +1,10 @@
+{
+  "name": "BaseConversion-Editor",
+  "references": [
+    "BaseConversion"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": []
+}

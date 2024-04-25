@@ -1,0 +1,6 @@
+﻿{
+  "BoeforBaseNumbers": [ 2, 4, 8, 10, 12, 16 ],
+  "AfterBaseNumbers": [ 10 ],
+  "MinimumValue": 100,
+  "MaximumValue": 1000
+}

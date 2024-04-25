@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615501dbe4f3fe94fbf4b564abb10237, type: 3}
+  m_Name: ModConfig
+  m_EditorClassIdentifier: 
+  id: BaseConversion
+  title: Base Conversion
+  author: Glaceon-471
+  description: "This is in base 4\u2026\nand this one is in base 12\u2026\nand this
+    is\u2026 in base 36!?"
+  version: 1.0.0
+  outputFolder: build
+  previewImage: {fileID: 2800000, guid: fa0718e89e7d59141a52b80c00778050, type: 3}
