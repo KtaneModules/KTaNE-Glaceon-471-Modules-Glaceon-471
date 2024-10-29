@@ -15,7 +15,7 @@ MonoBehaviour:
   title: Base Conversion
   author: Glaceon-471
   description: "This is in base 4\u2026\nand this one is in base 12\u2026\nand this
-    is\u2026 in base 36!?"
-  version: 1.0.0
+    is\u2026 in base 36!?\n\nThanks eXish for fixing the bug!"
+  version: 1.0.1
   outputFolder: build
   previewImage: {fileID: 2800000, guid: fa0718e89e7d59141a52b80c00778050, type: 3}
