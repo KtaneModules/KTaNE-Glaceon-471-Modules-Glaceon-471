@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using static KMSoundOverride;
 using Random = UnityEngine.Random;
@@ -264,5 +266,58 @@ public class BaseConversion : MonoBehaviour
     {
         var data = string.Format(log, args);
         Debug.LogFormat("[Base Conversion #{0}] {1}", ModuleId, data);
+    }
+
+    #pragma warning disable 414
+    private readonly string TwitchHelpMessage = @"!{0} submit <number> [Submits the specified number]";
+    #pragma warning restore 414
+    IEnumerator ProcessTwitchCommand(string command)
+    {
+        string[] parameters = command.Split(' ');
+        if (parameters[0].EqualsIgnoreCase("submit"))
+        {
+            if (parameters.Length > 2)
+                yield return "sendtochaterror Too many parameters!";
+            else if (parameters.Length == 1)
+                yield return "sendtochaterror Please specify a number to submit!";
+            else
+            {
+                parameters[1] = parameters[1].ToUpperInvariant();
+                for (int i = 0; i < parameters[1].Length; i++)
+                {
+                    if (!IntData.Contains(parameters[1][i].ToString()))
+                    {
+                        yield return "sendtochaterror!f The specified number '" + parameters[1] + "' is invalid!";
+                        yield break;
+                    }
+                }
+                if (parameters[1].Length > 32)
+                {
+                    yield return "sendtochaterror!f The specified number '" + parameters[1] + "' is too large!";
+                    yield break;
+                }
+                yield return null;
+                for (int i = 0; i < parameters[1].Length; i++)
+                {
+                    ButtonData[Array.IndexOf(IntData, parameters[1][i].ToString())].OnInteract();
+                    yield return new WaitForSeconds(0.1f);
+                }
+                AnswerButton.OnInteract();
+            }
+        }
+    }
+
+    IEnumerator TwitchHandleForcedSolve()
+    {
+        KMSelectable main = GetComponent<KMSelectable>();
+        main.OnFocus();
+        for (int i = AfterValueDisplayText.text.Length; i < AnswerValue.Length; i++)
+        {
+            ButtonData[Array.IndexOf(IntData, AnswerValue[i].ToString())].OnInteract();
+            yield return new WaitForSeconds(.1f);
+        }
+        while (!Activated) yield return true;
+        AnswerButton.OnInteract();
+        main.OnDefocus();
     }
 }
